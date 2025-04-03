@@ -2,101 +2,104 @@
 
 ![alt text](https://shpeuf.s3.amazonaws.com/public/misc/logo_horizontal.png "SHPE logo")
 
-Congrats one more time on being selected as prospective software developer directors! (Sweenies) In this repository, you will find a template that you would want to use to build the backend functionality of your training project. 
 
-## Why This Template?
+# GraphQL Backend API
 
-This template should function as a building foundation for the backend of your project. In it, you will find how your web app should be structured, although it is not completely necessary, I truly recommend following this structure as it very closely mimics the way our own server is structured (plus it makes your JPM work easier) and will yield you better results once you are integraded into the team.
+This project is a GraphQL backend built with Apollo Server and MongoDB, providing a structured API for managing artist data. The backend supports queries and mutations for retrieving and modifying artist records.
 
-Every file has it's own section in the readME(See navigation below) explaining its purpose and role in the proper function of your website. Each file in the repository also includes several commented out examples and explanations that you can follow to adjust it to your preferences and choice of theme/topic/info used.
+## Features
+- GraphQL API with Apollo Server
+- MongoDB database integration using Mongoose
+- Queries to fetch artists and individual artist data
+- Mutations to add new artists
 
-## Getting Started
+## Setup and Installation
 
-Before starting out, we must first take care of a couple of things. 
+### Prerequisites
+Ensure you have the following installed:
+- [Node.js](https://nodejs.org/)
+- [Yarn](https://yarnpkg.com/)
+- A MongoDB database (local or cloud-based, such as [MongoDB Atlas](https://www.mongodb.com/atlas))
 
-If you haven't already, make sure you install the latest version of node.js, link: https://nodejs.org/en
+### Installation Steps
+1. Clone this repository:
+   ```sh
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+2. Install dependencies:
+   ```sh
+   yarn install
+   ```
+3. Configure environment variables:
+   - Create a `.env` file in the root directory.
+   - Add your MongoDB connection string:
+     ```env
+     MONGODB=mongodb+srv://your-username:your-password@your-cluster.mongodb.net/your-database-name?retryWrites=true&w=majority
+     ```
 
-
-create our database! For this project, we will be using mongodb to store information from and to our server, as it is what we currently use to store all of SHPE UF's info from our website!
-
-I have created a short tutorial video to show how to set up mongoDB for this project: 
-
-Another important step if you have not done so already, open a terminal command and run "npm install" in the foulder where the package.json and package-lock.json are located. This will install all the dependencies you may need (note: if you decide to implement something extra, you will have to npm install said dependencies) But for now this should be enough to get the backend runnning! 
-
-## Navigation
-
-### index.js ###
-
-The index.js file is the entry point of your backend application. It brings together all the key components of your GraphQL server, connects to your MongoDB database, and starts the server.
-
-**Purpose:**
-
-* Set Up the Apollo Server: This file configures and initializes the Apollo Server, which handles GraphQL queries, mutations, and subscriptions.
-
-* Connect to MongoDB: It establishes a connection to the MongoDB database using Mongoose.
-
-* Start the Server: Once the database is successfully connected, the server starts and listens for incoming requests on the specified port.
-
-**ApolloServer documentation:** https://www.apollographql.com/docs/apollo-server/api/apollo-server
-
-**Mongoose docs:** https://mongoosejs.com/docs/connections.html
-
-### config.js ###
-This file is used to connect to the mongodb. not much to see here. watch video!
-
-### models folder
-
-#### TypeName.js
-
-The files in the model folder look extremely similar to the definitions already established on TypeDefs.js, so this part is pretty straightforward.
-
-This defines the database schema using Mongoose (for MongoDB).
-It specifies how data is stored and managed in MongoDB.
-
-Example: 
-
+## Running the Server
+Start the server using:
+```sh
+yarn start
 ```
-const { model, Schema } = require('mongoose');
-
-const artistSchema = new Schema({
-    name: String,
-    genre: String
-});
-
-module.exports = model('Artist', artistSchema);
+The server should now be running, and you can access GraphQL Playground at:
+```
+http://localhost:5001/
 ```
 
-### graphql folder
-
-#### -TypeDefs.js
-
-The TypeDefs.js file defines the GraphQL schema for your backend. This file is where you specify the structure of the data that can be queried or mutated through your API.
-
-The most basic components of a GraphQL schema are Object types,  which just represent a kind of object you can fetch from your service, and what fields it has. In SDL, we represent it like this:
-
-```
-type User {
-  id: ID!
-  name: String
+## GraphQL API
+### Queries
+#### Fetch all artists
+```graphql
+query GetArtists {
+  getArtists {
+    id
+    name
+    genre
+  }
 }
-
-type Query {
-  user(id: ID!): User
+```
+#### Fetch a single artist by ID
+```graphql
+query GetArtist($id: ID!) {
+  getArtist(id: $id) {
+    id
+    name
+    genre
+  }
 }
 ```
 
-### resolvers 
+### Mutations
+#### Add a new artist
+```graphql
+mutation AddArtist($name: String!, $genre: String!) {
+  addArtist(name: $name, genre: $genre) {
+    id
+    name
+    genre
+  }
+}
+```
 
-If you want a more comprehensive tutorial or you like learning by doing before starting, check out this tutorial! https://www.apollographql.com/tutorials/lift-off-part2?referrer=docs-content
+## Project Structure
+```
+/project-root
+│── graphql/
+│   ├── TypeDefs.js  # GraphQL schema definitions
+│   ├── resolvers/
+│   │   ├── index.js  # Root resolver
+│   │   ├── artist.js  # Artist-related resolvers
+│── models/
+│   ├── Artist.js  # Mongoose schema and model
+│── config.js  # Configuration settings
+│── index.js  # Entry point of the server
+│── package.json  # Project dependencies and scripts
+│── README.md  # Project documentation
+```
 
-In this template only one resolver (and type) is used. If you are using more than one type, for example, posts, users & comments, you will have to add the correspondent files manually.
+## Open http://localhost:5001/ in Chrome 
+<img width="1088" alt="Screenshot 2025-04-03 at 12 56 00 PM" src="https://github.com/user-attachments/assets/c1ce5fd6-ccc7-4682-8b20-cdcf1a6ec4ea" />
 
-#### -index.js
 
-This index.js file inside the resolvers serves to export each individual resolver file.
-
-#### -typename.js
-
-"typename" is a placeholder for the name of your type. It is good practice to name this file the same as what is on your TypeDefs & Schema. 
-
-This is one of the most important files as here is where you will be adding functionality/definitions to your queries and mutations.
