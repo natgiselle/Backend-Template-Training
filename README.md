@@ -101,5 +101,3 @@ mutation AddArtist($name: String!, $genre: String!) {
 
 ## Open http://localhost:5001/ in Chrome 
 <img width="1088" alt="Screenshot 2025-04-03 at 12 56 00 PM" src="https://github.com/user-attachments/assets/c1ce5fd6-ccc7-4682-8b20-cdcf1a6ec4ea" />
-
-
