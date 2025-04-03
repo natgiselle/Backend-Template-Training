@@ -1,9 +1,13 @@
 const Artist = require('../../models/Artist');
 
-const resolvers = {
+module.exports = {
     Query: {
-        getArtists: async () => await Artist.find(),
-        getArtist: async (_, { id }) => await Artist.findById(id),
+        getArtists: async () => {
+            return await Artist.find();
+        },
+        getArtist: async (_, { id }) => {
+            return await Artist.findById(id);
+        },
     },
     Mutation: {
         addArtist: async (_, { name, genre }) => {
@@ -13,5 +17,3 @@ const resolvers = {
         },
     },
 };
-
-module.exports = resolvers;
