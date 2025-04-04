@@ -1,0 +1,163 @@
+yarn start                                                                                                                                ─╯
+yarn run v1.22.22
+warning ../../package.json: No license field
+$ node index
+(node:46095) [MONGODB DRIVER] Warning: useNewUrlParser is a deprecated option: useNewUrlParser has no effect since Node.js Driver version 4.0.0 and will be removed in the next major version
+(Use `node --trace-warnings ...` to show where the warning was created)
+/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongoose/lib/connection.js:1165
+    err = new ServerSelectionError();
+          ^
+
+MongooseServerSelectionError: Could not connect to any servers in your MongoDB Atlas cluster. One common reason is that you're trying to access the database from an IP that isn't whitelisted. Make sure your current IP address is on your Atlas cluster's IP whitelist: https://www.mongodb.com/docs/atlas/security-whitelist/
+    at _handleConnectionErrors (/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongoose/lib/connection.js:1165:11)
+    at NativeConnection.openUri (/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongoose/lib/connection.js:1096:11) {
+  errorLabelSet: Set(0) {},
+  reason: TopologyDescription {
+    type: 'ReplicaSetNoPrimary',
+    servers: Map(3) {
+      'test-cluster-shard-00-02.jd6np.mongodb.net:27017' => ServerDescription {
+        address: 'test-cluster-shard-00-02.jd6np.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        minRoundTripTime: 0,
+        lastUpdateTime: 1644233337,
+        lastWriteDate: 0,
+        error: MongoNetworkError: unable to get local issuer certificate
+            at TLSSocket.<anonymous> (/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongodb/lib/cmap/connect.js:285:44)
+            at Object.onceWrapper (node:events:622:26)
+            at TLSSocket.emit (node:events:507:28)
+            at emitErrorNT (node:internal/streams/destroy:170:8)
+            at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+          errorLabelSet: Set(1) { 'ResetPool' },
+          beforeHandshake: false,
+          [cause]: Error: unable to get local issuer certificate
+              at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+              at TLSSocket.emit (node:events:507:28)
+              at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+              at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+            code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY'
+          }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        maxMessageSizeBytes: null,
+        maxWriteBatchSize: null,
+        maxBsonObjectSize: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null,
+        iscryptd: false
+      },
+      'test-cluster-shard-00-00.jd6np.mongodb.net:27017' => ServerDescription {
+        address: 'test-cluster-shard-00-00.jd6np.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        minRoundTripTime: 0,
+        lastUpdateTime: 1644233335,
+        lastWriteDate: 0,
+        error: MongoNetworkError: unable to get local issuer certificate
+            at TLSSocket.<anonymous> (/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongodb/lib/cmap/connect.js:285:44)
+            at Object.onceWrapper (node:events:622:26)
+            at TLSSocket.emit (node:events:507:28)
+            at emitErrorNT (node:internal/streams/destroy:170:8)
+            at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+          errorLabelSet: Set(1) { 'ResetPool' },
+          beforeHandshake: false,
+          [cause]: Error: unable to get local issuer certificate
+              at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+              at TLSSocket.emit (node:events:507:28)
+              at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+              at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+            code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY'
+          }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        maxMessageSizeBytes: null,
+        maxWriteBatchSize: null,
+        maxBsonObjectSize: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null,
+        iscryptd: false
+      },
+      'test-cluster-shard-00-01.jd6np.mongodb.net:27017' => ServerDescription {
+        address: 'test-cluster-shard-00-01.jd6np.mongodb.net:27017',
+        type: 'Unknown',
+        hosts: [],
+        passives: [],
+        arbiters: [],
+        tags: {},
+        minWireVersion: 0,
+        maxWireVersion: 0,
+        roundTripTime: -1,
+        minRoundTripTime: 0,
+        lastUpdateTime: 1644233354,
+        lastWriteDate: 0,
+        error: MongoNetworkError: unable to get local issuer certificate
+            at TLSSocket.<anonymous> (/Users/natalieortiz/mongodb-practice/Backend-Template-Training/node_modules/mongodb/lib/cmap/connect.js:285:44)
+            at Object.onceWrapper (node:events:622:26)
+            at TLSSocket.emit (node:events:507:28)
+            at emitErrorNT (node:internal/streams/destroy:170:8)
+            at emitErrorCloseNT (node:internal/streams/destroy:129:3)
+            at process.processTicksAndRejections (node:internal/process/task_queues:90:21) {
+          errorLabelSet: Set(1) { 'ResetPool' },
+          beforeHandshake: false,
+          [cause]: Error: unable to get local issuer certificate
+              at TLSSocket.onConnectSecure (node:_tls_wrap:1679:34)
+              at TLSSocket.emit (node:events:507:28)
+              at TLSSocket._finishInit (node:_tls_wrap:1078:8)
+              at ssl.onhandshakedone (node:_tls_wrap:864:12) {
+            code: 'UNABLE_TO_GET_ISSUER_CERT_LOCALLY'
+          }
+        },
+        topologyVersion: null,
+        setName: null,
+        setVersion: null,
+        electionId: null,
+        logicalSessionTimeoutMinutes: null,
+        maxMessageSizeBytes: null,
+        maxWriteBatchSize: null,
+        maxBsonObjectSize: null,
+        primary: null,
+        me: null,
+        '$clusterTime': null,
+        iscryptd: false
+      }
+    },
+    stale: false,
+    compatible: true,
+    heartbeatFrequencyMS: 10000,
+    localThresholdMS: 15,
+    setName: 'atlas-tymbyr-shard-0',
+    maxElectionId: null,
+    maxSetVersion: null,
+    commonWireVersion: 0,
+    logicalSessionTimeoutMinutes: null
+  },
+  code: undefined
+}
+
+Node.js v23.11.0
+error Command failed with exit code 1.
+info Visit https://yarnpkg.com/en/docs/cli/run for documentation about this command.
